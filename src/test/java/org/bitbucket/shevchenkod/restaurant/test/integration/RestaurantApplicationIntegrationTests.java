@@ -63,7 +63,7 @@ public class RestaurantApplicationIntegrationTests {
 
 	@Test
 	public void testDefaultSettings() throws Exception {
-		assertEquals(new Integer(2), this.template
+		assertEquals(new Integer(4), this.template
 				.queryForObject("SELECT COUNT(*) FROM account", Integer.class));
 	}
 
