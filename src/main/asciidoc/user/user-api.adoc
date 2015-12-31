@@ -1,0 +1,278 @@
+= Restaurant REST API User Guide
+Denis Shevchenko;
+:doctype: book
+:toc:
+:sectanchors:
+:sectlinks:
+:toclevels: 4
+:source-highlighter: highlightjs
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `401 Unauthorized`
+| User has no granted permissions to access resource
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[overview-errors]]
+== Errors
+
+Whenever an error response (status code >= 400) is returned, the body will contain a JSON object
+that describes the problem. The error object has the following structure:
+
+include::{snippets}/error-example/response-fields.adoc[]
+
+For example, a request that attempts to add a menu for non-existent restaurant will produce a
+`400 Bad Request` response:
+
+include::{snippets}/error-example/http-response.adoc[]
+
+[[resources]]
+= Resources
+
+
+
+[[resources-index]]
+== Index
+
+The index provides the entry point into the service.
+
+
+
+
+[[resources-votes]]
+== Votes
+
+The Votes resources is used to create and list votes
+
+
+[[resources-votes-item]]
+=== Listing votes
+
+A `GET` request will retrieve actual vote.
+
+==== Response structure
+
+include::{snippets}/votes-item-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/votes-item-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/votes-item-example/http-response.adoc[]
+
+
+[[resources-votes-vote]]
+=== Creating a vote
+
+A `POST` request will create a user vote for restaurant menu. User votes for restaurant's menu for today.
+
+==== Request structure
+
+include::{snippets}/votes-vote-example/request-parameters.adoc[]
+
+==== Response structure
+
+include::{snippets}/votes-vote-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/votes-vote-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/votes-vote-example/http-response.adoc[]
+
+
+
+
+[[resources-menus]]
+== Menus
+
+The Menus resources is used to create and list menus
+
+
+[[resources-menus-list-today]]
+=== Listing notes
+
+A `GET` request will retrieve list of today menus.
+
+==== Response structure
+
+include::{snippets}/menus-list-today-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/menus-list-today-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/menus-list-today-example/http-response.adoc[]
+
+
+
+[[resources-menus]]
+== Menus
+
+A `GET` request will retrieve list of today menus.
+
+
+[[resources-menus-list-today]]
+=== Listing notes
+
+A `GET` request will retrieve list of today menus.
+
+==== Response structure
+
+include::{snippets}/menus-list-today-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/menus-list-today-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/menus-list-today-example/http-response.adoc[]
+
+
+
+[[resources-restaurants]]
+== Restaurants
+
+The Restaurants resources is used to create and list restaurants
+
+
+
+[[resources-restaurants-list]]
+=== Listing notes
+
+A `GET` request will list all of the service's restaurants.
+
+
+==== Response structure
+
+include::{snippets}/restaurants-list-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/restaurants-list-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/restaurants-list-example/http-response.adoc[]
+
+
+
+[[resources-restaurants-item]]
+=== Listing notes
+
+A `GET` request will retrieve single restaurant.
+
+==== Response structure
+
+include::{snippets}/restaurants-item-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/restaurants-item-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/restaurants-item-example/http-response.adoc[]
+
+
+
+
+[[resources-dishes]]
+== Dishes
+
+The Dishes resources is used to create and list dishes
+
+
+
+[[resources-dishes-list]]
+=== Listing notes
+
+A `GET` request will list all of the service's dishes.
+
+
+==== Response structure
+
+include::{snippets}/dishes-list-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/dishes-list-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/dishes-list-example/http-response.adoc[]
+
+
+
+[[resources-dishes-item]]
+=== Listing notes
+
+A `GET` request will retrieve single restaurant.
+
+==== Response structure
+
+include::{snippets}/dishes-item-example/response-fields.adoc[]
+
+==== Example request
+
+include::{snippets}/dishes-item-example/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/dishes-item-example/http-response.adoc[]
+
