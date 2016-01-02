@@ -1,21 +1,23 @@
 # Restaurant Vote Service
 
+Environment:
+RDBS: Postresql server
+
 
 Build instructions
-
-1. Install maven
-2. Run
+1. Create empty database with name "restaurant_test".
+2. Install maven
+3. Run
     mvn clean package
   from command line
 
 Run Instructions
   
-1. Install Postgresql server
-2. Create empty database with name "restaurant".
-3. Switch to target folder of built project
-4. Run
+1. Create empty database with name "restaurant".
+2. Switch to target folder of built project
+3. Run
 	java -jar restaurant.war
-5. Wait till message
+4. Wait till message
 		Started RestaurantApplication
-6. Open localhost:8080/api/docs
-7. Login with credentials {admin:123} or {user:123}
+5. Open localhost:8080/api/docs
+6. Login with credentials {admin:123} or {user:123}
