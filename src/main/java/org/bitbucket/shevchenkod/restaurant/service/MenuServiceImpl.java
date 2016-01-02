@@ -28,8 +28,11 @@ public class MenuServiceImpl extends GenericCrudService<Long, Menu, MenuReposito
 	@Autowired
 	RestaurantRepository restaurantRepository;
 
+	//@Autowired
+	//DishRepository dishRepository;
+
 	@Autowired
-	DishRepository dishRepository;
+	DishService dishService;
 
 	/**
 	 * Get all menus for specified date. Day start end finish at 11AM.
@@ -131,9 +134,11 @@ public class MenuServiceImpl extends GenericCrudService<Long, Menu, MenuReposito
 	}
 
 	private void updateMenuItem(MenuItem menuItem, MenuItemDto menuItemDto) {
-		Optional<Dish> dishOptional = dishRepository.findByName(menuItemDto.getDishName());
-		if (!dishOptional.isPresent()) {
-			dishOptional = Optional.ofNullable(dishRepository.findOne(menuItemDto.getDishId()));
+		Optional<Dish> dishOptional = Optional.empty();
+		if (Optional.ofNullable(menuItemDto.getDishName()).isPresent()) {
+			dishOptional = dishService.findByName(menuItemDto.getDishName());
+		} else if (Optional.ofNullable(menuItemDto.getDishId()).isPresent()) {
+			dishOptional = dishService.getById(menuItemDto.getDishId());
 		}
 
 		Dish dish;
@@ -142,6 +147,7 @@ public class MenuServiceImpl extends GenericCrudService<Long, Menu, MenuReposito
 		} else {
 			dish = new Dish();
 			dish.setName(menuItemDto.getDishName());
+			dishService.create(dish);
 		}
 		menuItem.setDish(dish);
 		menuItem.setPrice(menuItemDto.getPrice());

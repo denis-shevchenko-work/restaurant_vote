@@ -109,7 +109,7 @@ public class MenuControllerTest extends AbstractControllerTestCase<MenuControlle
 	@Test
 	public void createAndGetTodayMenuComplex() throws Exception {
 		String restaurantName = "Rest menuController.createAndGetTodayMenuComplex";
-		String dishName = "Dish 1";
+		String dishName = "Rest menuController.createAndGetTodayMenuComplex";
 		Restaurant restaurant = new Restaurant(restaurantName);
 		restaurantService.create(restaurant);
 		restaurantService.flush();
