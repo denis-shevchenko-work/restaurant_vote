@@ -1,17 +1,17 @@
 # Restaurant Vote Service
 
-Environment:
-RDBS: Postresql server
+## Environment:
+RDBS: Postresql
 
 
-Build instructions
+## Build instructions
 1. Create empty database with name "restaurant_test".
 2. Install maven
 3. Run
     mvn clean package
   from command line
 
-Run Instructions
+## Run Instructions
   
 1. Create empty database with name "restaurant".
 2. Switch to target folder of built project
