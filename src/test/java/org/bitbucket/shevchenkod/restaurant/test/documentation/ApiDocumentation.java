@@ -1,4 +1,4 @@
-package org.bitbucket.shevchenkod.restaurant.test.integration;
+package org.bitbucket.shevchenkod.restaurant.test.documentation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.bitbucket.shevchenkod.restaurant.RestaurantApplication;
