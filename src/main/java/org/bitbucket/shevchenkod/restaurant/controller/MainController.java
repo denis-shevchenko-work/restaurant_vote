@@ -25,7 +25,7 @@ public class MainController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET, produces = {"application/json"})
 	@ResponseBody
 	public JsonModel homePage(HttpServletResponse response){
 		Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
@@ -37,7 +37,7 @@ public class MainController {
 		return result;
 	}
 
-	@RequestMapping(value = "api", method = RequestMethod.GET)
+	@RequestMapping(value = "api", method = RequestMethod.GET, produces = {"application/json"})
 	@ResponseBody
 	public JsonModel apiPage(HttpServletResponse response){
 		Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
@@ -49,14 +49,14 @@ public class MainController {
 		return result;
 	}
 
-	@RequestMapping(value = {"api/doc"}, method = RequestMethod.GET, produces = "text/html")
+	@RequestMapping(value = {"/api/doc"}, method = RequestMethod.GET, produces = "text/html")
 	public void doc(HttpServletResponse response) throws IOException {
 		Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
 		Collection<? extends GrantedAuthority> authorities = authentication.get().getAuthorities();
 		if (authorities.contains(new SimpleGrantedAuthority(UserRoles.ADMIN.getName()))){
-			response.sendRedirect("api/doc/admin/admin-api.html");
+			response.sendRedirect("/admin-api.html");//api/doc/admin/
 		} else if (authorities.contains(new SimpleGrantedAuthority(UserRoles.USER.getName()))) {
-			response.sendRedirect("api/doc/user/user-api.html");
+			response.sendRedirect("/user-api.html");//api/doc/user/
 		} else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN ,"Please authorize");
 		}

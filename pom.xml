@@ -6,7 +6,7 @@
     <groupId>com.gmail.denis.shevchenko.work.restaurant</groupId>
     <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>restaurant</name>
     <description>Restaurant</description>
@@ -148,8 +148,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
-        </dependency -->
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency -->
 
     </dependencies>
 
@@ -242,7 +247,9 @@
                             <doctype>book</doctype>
                             <attributes>
                                 <snippets>${project.build.directory}/generated-snippets</snippets>
+
                             </attributes>
+                            <preserveDirectories>false</preserveDirectories>
                         </configuration>
                     </execution>
                 </executions>
@@ -257,7 +264,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static/api/docs</outputDirectory>
+                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}/generated-docs</directory>
@@ -267,6 +274,29 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/webapp</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -288,40 +318,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
             </plugin -->
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-
-                        <id>domain-type-field-list</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <skip>true</skip>
-                            <docletPath>${project.build.outputDirectory}/</docletPath>
-                            <doclet>FieldsJavaDocGenerator</doclet>
-                            <outputDirectory>${project.build.outputDirectory}/../../javadoc</outputDirectory>
-                            <sourcepath>
-                                ${basedir}/src/main/java/org/bitbucket/shevchenkod/restaurant/controller;
-                                ${basedir}/src/main/java/org/bitbucket/shevchenkod/restaurant/model
-                            </sourcepath>
-                            <useStandardDocletOptions>true</useStandardDocletOptions>
-                            <author>false</author>
-                            <bottom>gen</bottom>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <charset>UTF-8</charset>
-                    <docencoding>UTF-8</docencoding>
-                    <docfilessubdirs>true</docfilessubdirs>
-                    <show>public</show>
-                    <source>1.8</source>
-                </configuration>
-            </plugin>
 
         </plugins>
     </build>

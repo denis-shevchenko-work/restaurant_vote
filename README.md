@@ -32,5 +32,5 @@ RDBS: Postresql
 	java -jar restaurant.war
 4. Wait till message
 		Started RestaurantApplication
-5. Open localhost:8080/api/docs
+5. Open http://localhost:8080/admin-api.html
 6. Login with credentials {admin:123} or {user:123}

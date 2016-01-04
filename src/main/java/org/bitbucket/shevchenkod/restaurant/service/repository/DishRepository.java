@@ -2,9 +2,11 @@ package org.bitbucket.shevchenkod.restaurant.service.repository;
 
 import org.bitbucket.shevchenkod.restaurant.model.Dish;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.Optional;
 
+@RepositoryRestResource(collectionResourceRel = "dishes", path = "api/dishes")
 public interface DishRepository extends JpaRepository<Dish, Long> {
 
 	/**

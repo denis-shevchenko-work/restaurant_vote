@@ -540,7 +540,7 @@ A `DELETE` request is used to delete a dish
 
 ==== Request structure
 
-include::{snippets}/dishes-delete-example/request-fields.adoc[]
+include::{snippets}/dishes-delete-example/path-parameters.adoc[]
 
 ==== Example request
 

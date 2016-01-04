@@ -23,9 +23,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		converters.add(new MappingJackson2HttpMessageConverter());
 	}
 
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "*.html").addResourceLocations("classpath:META-INF/resources/").setCachePeriod(0);
+		registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "**/*.html").addResourceLocations("classpath:static/","classpath:META-INF/resources/").setCachePeriod(0);
 	}
 
 }
