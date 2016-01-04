@@ -249,7 +249,7 @@
                                 <snippets>${project.build.directory}/generated-snippets</snippets>
 
                             </attributes>
-                            <preserveDirectories>false</preserveDirectories>
+                            <preserveDirectories>true</preserveDirectories>
                         </configuration>
                     </execution>
                 </executions>
@@ -264,7 +264,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                            <outputDirectory>${project.build.outputDirectory}/static/api/docs</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}/generated-docs</directory>

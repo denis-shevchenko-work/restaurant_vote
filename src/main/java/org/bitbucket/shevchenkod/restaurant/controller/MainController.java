@@ -44,19 +44,19 @@ public class MainController {
 		String userString  = authentication.isPresent() ? authentication.get().toString() : "anonymous";
 
 		JsonModel result = new JsonModel();
-		result.put("doc_url", "/api/doc");
+		result.put("doc_url", "/api/docs");
 		result.put("user", userString);
 		return result;
 	}
 
-	@RequestMapping(value = {"/api/doc"}, method = RequestMethod.GET, produces = "text/html")
+	@RequestMapping(value = {"api/docs"}, method = RequestMethod.GET, produces = "text/html")
 	public void doc(HttpServletResponse response) throws IOException {
 		Optional<Authentication> authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
 		Collection<? extends GrantedAuthority> authorities = authentication.get().getAuthorities();
 		if (authorities.contains(new SimpleGrantedAuthority(UserRoles.ADMIN.getName()))){
-			response.sendRedirect("/admin-api.html");//api/doc/admin/
+			response.sendRedirect("/api/docs/admin/admin-api.html");//api/doc/admin/
 		} else if (authorities.contains(new SimpleGrantedAuthority(UserRoles.USER.getName()))) {
-			response.sendRedirect("/user-api.html");//api/doc/user/
+			response.sendRedirect("/api/docs/user/user-api.html");//api/doc/user/
 		} else {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN ,"Please authorize");
 		}
