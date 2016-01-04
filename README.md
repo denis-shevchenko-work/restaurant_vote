@@ -29,7 +29,7 @@ RDBS: Postresql
 1. Create empty database with name "restaurant".
 2. Switch to target folder of built project
 3. Run
-	java -jar restaurant.war
+	java -jar restaurant.jar
 4. Wait till message
 		Started RestaurantApplication
 5. Open http://localhost:8080/admin-api.html
